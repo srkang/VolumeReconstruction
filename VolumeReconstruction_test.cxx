@@ -19,7 +19,8 @@
 
 int main(int argc, char** argv)
 {
-	std::string path = "D:\\Projects\\3DUS\\3D_abdominal_phantom_11_13_2014"; 
+	//std::string path = "D:\\Projects\\3DUS\\3D_abdominal_phantom_11_13_2014"; 
+	std::string path = "C:\\Users\\Alan\\Dropbox\\CNMC_project\\Sono Table\\3DUS\\Abdominal Phantom";
 	std::string filename = path+"\\US_201411131228.vti";
 	//filename += "\\US_201411131228.dcm";
 		
@@ -63,6 +64,10 @@ int main(int argc, char** argv)
 
 	int zPos[1000] = {0};  //mm
 	std::string textLine;  
+
+	std::vector<unsigned char> m_img_vol_vec3b;
+
+
 	
 	for ( int i = 0; i<1000 ; i++) 
 	{	
@@ -87,7 +92,8 @@ int main(int argc, char** argv)
 	for (int z =0 ; z <= extent[5]; z++)
 	{
 		//std::vector<cv::Mat> layers ( extent[1], extent[3],CV_8UC1);
-		cv::Mat layers( extent[1]+1, extent[3]+1,CV_8UC1);
+		cv::Mat layers( extent[3]+1, extent[1]+1,CV_8UC1);
+
 
 		for (int width =0 ; width <= extent[1]; width++)
 		{
@@ -101,7 +107,7 @@ int main(int argc, char** argv)
 				//unsigned char *temp = static_cast<unsigned char*>( img->GetScalarPointer(width,height,z) );
 				//layers.at<unsigned char>(cv::Point(height,width)) = (int)*temp;
 
-				layers.at<unsigned char>(cv::Point(height,width)) = *static_cast<unsigned char*>( img->GetScalarPointer(width,height,z) );
+				layers.at<unsigned char>(cv::Point(width,height)) = *static_cast<unsigned char*>( img->GetScalarPointer(width,height,z) );
 				//std::cout << layers << endl;
 				//std::cout << (int)*temp << std::endl;
 			}
@@ -109,7 +115,8 @@ int main(int argc, char** argv)
 		cv::namedWindow( "2D US", CV_WINDOW_AUTOSIZE );
 		cv::imshow( "2D US", layers);
 
-
+		if (cv::waitKey(1) >= 0) break;
+		m_img_vol_vec3b.insert(m_img_vol_vec3b.end(), a.begin(), a.end());
 
 	}
 
