@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 
 	std::vector<unsigned char> m_img_vol_vec3b; 
 
-	std::vector<unsigned char> a;
+	
 
 
 	for (int z =0 ; z <= extent[5]; z++)
@@ -113,9 +113,15 @@ int main(int argc, char** argv)
 		cv::imshow( "2D US", layers);
 
 		if (cv::waitKey(1) >= 0) break;
+		
+		std::vector<unsigned char> a = layers;
+		//
+
 		m_img_vol_vec3b.insert(m_img_vol_vec3b.end(), a.begin(), a.end());
 
 	}
+
+
 
 	// 1D interpolation 
 
