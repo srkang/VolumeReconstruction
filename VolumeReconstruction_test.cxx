@@ -19,8 +19,8 @@
 
 int main(int argc, char** argv)
 {
-	//std::string path = "D:\\Projects\\3DUS\\3D_abdominal_phantom_11_13_2014"; 
-	std::string path = "C:\\Users\\Alan\\Dropbox\\CNMC_project\\Sono Table\\3DUS\\Abdominal Phantom";
+	std::string path = "D:\\Projects\\3DUS\\3D_abdominal_phantom_11_13_2014"; 
+	//std::string path = "C:\\Users\\Alan\\Dropbox\\CNMC_project\\Sono Table\\3DUS\\Abdominal Phantom";
 	std::string filename = path+"\\US_201411131228.vti";
 	//filename += "\\US_201411131228.dcm";
 		
@@ -64,9 +64,6 @@ int main(int argc, char** argv)
 
 	int zPos[1000] = {0};  //mm
 	std::string textLine;  
-
-	std::vector<unsigned char> m_img_vol_vec3b;
-
 
 	
 	for ( int i = 0; i<1000 ; i++) 
