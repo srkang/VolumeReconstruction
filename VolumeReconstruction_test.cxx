@@ -83,8 +83,6 @@ int main(int argc, char** argv)
 
 	std::vector<unsigned char> m_img_vol_vec3b; 
 
-	std::vector<unsigned char> a;
-
 
 	for (int z =0 ; z <= extent[5]; z++)
 	{
